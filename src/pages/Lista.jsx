@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { AppContext } from '../components/AppContext'
 import Tarea from '../components/Tarea'
 
 const Lista = () => {
+  const { tareas } = useContext(AppContext)
+
   return (
     <div className='flex md:justify-center'>
-      <Tarea
-        titulo="Tarea 1"
-        prioridad="alta"
-        status="pendiente"
-      />
+      <div className='flex flex-col gap-2 w-full md:items-center'>
+        {tareas.map(tarea => (
+          <Tarea key={tarea.id} {...tarea} />
+        ))}
+
+      </div>
     </div>
   )
 }
