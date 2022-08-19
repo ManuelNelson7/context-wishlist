@@ -5,6 +5,10 @@ export const AppContext = createContext()
 const AppContextProvider = ({ children }) => {
     const [tareas, setTareas] = useState(localStorage.getItem('tareas') ? JSON.parse(localStorage.getItem('tareas')) : [])
 
+    useEffect(() => {
+        console.log(tareas)
+    }, [tareas])
+
     const addTarea = (titulo, prioridad) => {
         const id = tareas.length + 1
         const newTarea = {

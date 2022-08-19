@@ -7,12 +7,15 @@ const Lista = () => {
 
   return (
     <div className='flex md:justify-center'>
-      <div className='flex flex-col gap-2 w-full md:items-center'>
-        {tareas.map(tarea => (
-          <Tarea key={tarea.id} {...tarea} />
-        ))}
-
-      </div>
+      {tareas.length > 0 &&
+        (<div className='flex flex-col gap-2 w-full md:items-center'>
+          <p className='font-semibold mb-1'>Tareas por completar: {tareas.length}</p>
+          {tareas.map(tarea => (
+            <Tarea key={tarea.id} {...tarea} />
+          ))}
+        </div>
+        )
+      }
     </div>
   )
 }
